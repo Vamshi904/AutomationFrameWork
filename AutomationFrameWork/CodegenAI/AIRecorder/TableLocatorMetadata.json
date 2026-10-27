@@ -1,0 +1,158 @@
+{
+  "generatedAtUtc": "2026-09-16T11:51:06.451Z",
+  "codeFilePath": "C:\\Users\\shivakumar.garlapati\\source\\repos\\docadministration-app\\testing\\Doc Administration Playwright Automation\\AutomationFrameWork\\CodegenAI\\Code.ts",
+  "tableSelector": "table",
+  "analyzedActions": 4,
+  "transformedActions": 2,
+  "specificRulesFilePath": "C:\\Users\\shivakumar.garlapati\\source\\repos\\docadministration-app\\testing\\Doc Administration Playwright Automation\\AutomationFrameWork\\CodegenAI\\AIRecorder\\Intelligence\\SpecificLocatorRules.json",
+  "actions": [
+    {
+      "line": 9,
+      "action": "click",
+      "text": "Deals",
+      "tableDetected": false,
+      "strategy": "ROLE",
+      "confidence": 0.5,
+      "reason": "Not detected as table/grid action"
+    },
+    {
+      "line": 10,
+      "action": "click",
+      "text": "Deals Completion Status",
+      "tableDetected": false,
+      "strategy": "ROLE",
+      "confidence": 0.5,
+      "reason": "Not detected as table/grid action"
+    },
+    {
+      "line": 13,
+      "action": "click",
+      "elementType": "table-a",
+      "text": "01CMLB1",
+      "tableDetected": true,
+      "dataGridDetected": true,
+      "strategy": "TABLE_ROW_ID",
+      "confidence": 0.88,
+      "locator": "//tr[@id='ctl00_cp1_gd_ctl00__0']//td[2]/a",
+      "reason": "Observed row id; Column index fallback (2); Validation: Stable row id and column observed",
+      "uniqueMatch": true,
+      "candidates": [
+        {
+          "strategy": "ROLE",
+          "score": 5,
+          "locator": "page.getByRole('link', { name: '01CMLB1' })",
+          "validation": null
+        },
+        {
+          "strategy": "TABLE_ROW_ID",
+          "score": 12,
+          "locator": "//tr[@id='ctl00_cp1_gd_ctl00__0']//td[2]/a",
+          "validation": {
+            "valid": true,
+            "unique": true,
+            "matchEstimate": 1,
+            "reason": "Stable row id and column observed"
+          }
+        },
+        {
+          "strategy": "TABLE_KEY_VALUE_ROW",
+          "score": 5,
+          "locator": "//tr[td[1][normalize-space()='Shanikwa Peterkin']]//a[normalize-space()='01CMLB1']",
+          "validation": {
+            "valid": false,
+            "unique": false,
+            "matchEstimate": 0,
+            "reason": "Missing key/value row label or target-tag evidence"
+          }
+        },
+        {
+          "strategy": "TABLE_ROW_BUSINESS_VALUE",
+          "score": 12,
+          "locator": "//tr[td[normalize-space()='20386']]//td[2]/a",
+          "validation": {
+            "valid": true,
+            "unique": true,
+            "matchEstimate": 1,
+            "reason": "Business row and column are unique in observed DOM"
+          }
+        },
+        {
+          "strategy": "TABLE_CELL",
+          "score": 7,
+          "locator": "//table//tr[td[2]/a]//td[2]/a",
+          "validation": {
+            "valid": true,
+            "unique": true,
+            "matchEstimate": 1,
+            "reason": "Observed target uniquely resolves within detected column"
+          }
+        }
+      ]
+    },
+    {
+      "line": 14,
+      "action": "check",
+      "elementType": "table-input",
+      "text": "",
+      "tableDetected": true,
+      "dataGridDetected": true,
+      "strategy": "TABLE_ROW_ID",
+      "confidence": 0.88,
+      "locator": "//tr[@id='ctl00_ContentPlaceHolder1_rgrdReports_ctl00__1']//input[@name='ctl00$ContentPlaceHolder1$rgrdReports$ctl00$ctl07$chAction']",
+      "reason": "Observed row id; Unique name; Validation: Stable row id and column observed",
+      "uniqueMatch": true,
+      "candidates": [
+        {
+          "strategy": "ROLE",
+          "score": 5,
+          "locator": "page.locator('#ctl00_ContentPlaceHolder1_rgrdReports_ctl00_ctl07_chAction')",
+          "validation": null
+        },
+        {
+          "strategy": "TABLE_ROW_ID",
+          "score": 12,
+          "locator": "//tr[@id='ctl00_ContentPlaceHolder1_rgrdReports_ctl00__1']//input[@name='ctl00$ContentPlaceHolder1$rgrdReports$ctl00$ctl07$chAction']",
+          "validation": {
+            "valid": true,
+            "unique": true,
+            "matchEstimate": 1,
+            "reason": "Stable row id and column observed"
+          }
+        },
+        {
+          "strategy": "TABLE_KEY_VALUE_ROW",
+          "score": 5,
+          "locator": "//tr[td[1][normalize-space()='Loan Periodic Update']]//input[@value='' or @aria-label='' or @name='']",
+          "validation": {
+            "valid": false,
+            "unique": false,
+            "matchEstimate": 0,
+            "reason": "Missing key/value row label or target-tag evidence"
+          }
+        },
+        {
+          "strategy": "TABLE_ROW_BUSINESS_VALUE",
+          "score": 12,
+          "locator": "//tr[td[normalize-space()='Loan Periodic Update']]//input[@name='ctl00$ContentPlaceHolder1$rgrdReports$ctl00$ctl07$chAction']",
+          "validation": {
+            "valid": true,
+            "unique": true,
+            "matchEstimate": 1,
+            "reason": "Business row and column are unique in observed DOM"
+          }
+        },
+        {
+          "strategy": "TABLE_CELL",
+          "score": 7,
+          "locator": "//table//tr[.//input[@name='ctl00$ContentPlaceHolder1$rgrdReports$ctl00$ctl07$chAction']]//input[@name='ctl00$ContentPlaceHolder1$rgrdReports$ctl00$ctl07$chAction']",
+          "validation": {
+            "valid": true,
+            "unique": true,
+            "matchEstimate": 1,
+            "reason": "Observed target uniquely resolves within detected column"
+          }
+        }
+      ]
+    }
+  ]
+}

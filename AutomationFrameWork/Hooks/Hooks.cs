@@ -1,9 +1,9 @@
-﻿using AventStack.ExtentReports;
-using Microsoft.Extensions.Configuration;
+﻿using System.Text;
 using AutomationFrameWork.Drivers;
 using AutomationFrameWork.Pages;
 using AutomationFrameWork.Utilities;
-using System.Text;
+using AventStack.ExtentReports;
+using Microsoft.Extensions.Configuration;
 
 namespace AutomationFrameWork.Hooks
 {
@@ -15,8 +15,9 @@ namespace AutomationFrameWork.Hooks
         private readonly FeatureContext _featureContext;
 
         private static ExtentReports _extentReports;
-        private static ExtentTest _extentFeature;   // shared across scenarios, one per feature.
-        private ExtentTest _extentScenario;         // unique for each scenario instance.
+        private ExtentTest _extentScenario;
+
+        private readonly MailHelper _mailHelper;
 
         private static int _executedScenarioCount = 0;
         private static String? _testRunException;
@@ -24,9 +25,10 @@ namespace AutomationFrameWork.Hooks
 
         public Hooks(PlaywrightDriver playwrightDriver, ScenarioContext scenarioContext, FeatureContext featureContext)
         {
-            _playwrightDriver = playwrightDriver ?? throw new ArgumentNullException(nameof(playwrightDriver));
-            _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
-            _featureContext = featureContext ?? throw new ArgumentNullException(nameof(featureContext));
+            _playwrightDriver = playwrightDriver;
+            _scenarioContext = scenarioContext;
+            _featureContext = featureContext;
+            _mailHelper = new MailHelper();
         }
 
         [BeforeTestRun]
@@ -38,13 +40,14 @@ namespace AutomationFrameWork.Hooks
         [AfterTestRun]
         public static void AfterTestRun()
         {
-            if (_testRunException!=null)
+            if (_testRunException != null)
             {
                 CreateNoExecutionReport(_testRunException);
             }
             else
             {
                 _extentReports.Flush();
+                //_mailHelper.SendEmailReport();
             }
         }
 
@@ -52,20 +55,22 @@ namespace AutomationFrameWork.Hooks
         public static void BeforeFeature(FeatureContext featureContext)
         {
             var feature = _extentReports.CreateTest(featureContext.FeatureInfo.Title);
-            featureContext["ExtentFeature"] = feature;
+            featureContext.Set(feature, "ExtentFeature");
         }
 
         [BeforeScenario]
         public async Task BeforeScenarioAsync()
         {
+            ExtentTest? extentFeature = null;
+
             try
             {
                 LoadConfiguration();
 
                 Interlocked.Increment(ref _executedScenarioCount);
 
-                _extentFeature = _featureContext.Get<ExtentTest>("ExtentFeature");
-                _extentScenario = _extentFeature.CreateNode(_scenarioContext.ScenarioInfo.Title);
+                extentFeature = _featureContext.Get<ExtentTest>("ExtentFeature");
+                _extentScenario = extentFeature.CreateNode(_scenarioContext.ScenarioInfo.Title);
 
                 ExtentTestManager.Test = _extentScenario;
                 _scenarioContext["ExtentScenario"] = _extentScenario;
@@ -76,30 +81,55 @@ namespace AutomationFrameWork.Hooks
             {
                 _testRunException = ex.Message;
 
-                // 🔴 Mark scenario as FAILED in Extent
                 _extentScenario?.Fail(
                     "<b>Scenario setup failed.</b><br>" +
                     $"<b>Message:</b> {ex.Message}"
                 );
 
-                // 🔴 Also fail feature explicitly
-                _extentFeature?.Fail("Feature failed during scenario setup.");
+                extentFeature?.Fail("Feature failed during scenario setup.");
 
-                // 🔴 Log to console (CI visibility)
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Scenario setup failed:");
                 Console.WriteLine(ex);
                 Console.ResetColor();
 
-                // 🔴 THIS IS CRITICAL
-                throw; // stop execution, mark test as failed
+                throw;
             }
         }
 
         [AfterScenario]
         public async Task AfterScenarioAsync()
         {
-            await _playwrightDriver.CleanupAsync();
+            try
+            {
+                bool testFailed = _scenarioContext.TestError != null;
+                bool isAuthFailure = testFailed && _playwrightDriver.IsOnLoginPage();
+
+                if (isAuthFailure)
+                {
+                    // The browser ended up on the login page — session is definitely broken.
+                    // Wipe it so next run does a fresh login.
+                    PlaywrightDriver.InvalidateSession();
+                    Console.WriteLine("[Session] Auth failure detected (redirected to login) — session invalidated.");
+                }
+                else if (testFailed)
+                {
+                    // Test failed for a NON-auth reason (bad selector, data issue, etc.)
+                    // Session is still valid — keep it and refresh the timestamp so it doesn't expire.
+                    await _playwrightDriver.SaveSessionAsync();
+                    Console.WriteLine("[Session] Test failed (non-auth reason) — session preserved and timestamp refreshed.");
+                }
+                else
+                {
+                    // Test passed — always refresh the session & timestamp so the 24hr clock resets.
+                    await _playwrightDriver.SaveSessionAsync();
+                    Console.WriteLine("[Session] Test passed — session saved/refreshed.");
+                }
+            }
+            finally
+            {
+                await _playwrightDriver.CleanupAsync();
+            }
         }
 
         [AfterStep]
@@ -108,7 +138,6 @@ namespace AutomationFrameWork.Hooks
             var stepText = scenarioContext.StepContext.StepInfo.Text;
             var stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType;
 
-            // Try to get from scenario context first, then fall back to ExtentTestManager
             ExtentTest extentScenario;
 
             if (scenarioContext.TryGetValue("ExtentScenario", out ExtentTest storedScenario))
@@ -141,7 +170,6 @@ namespace AutomationFrameWork.Hooks
             }
         }
 
-
         private void LoadConfiguration()
         {
             var projectRoot = CommonActionsPage.GetProjectRoot();
@@ -153,10 +181,20 @@ namespace AutomationFrameWork.Hooks
                 .Build();
 
             var configReader = configuration.GetSection("Credentials").Get<ConfigReader>();
-            var urls = configuration.GetSection("Urls").Get<UrlSettings>();
+            var urls = configuration.GetSection("Credentials:Urls").Get<UrlSettings>();
             var automationSettings = configuration.GetSection("AutomationSettings").Get<AutomationSettings>();
 
-            configReader.Password = DecodeBase64(configReader.Password);
+            if (configReader == null)
+               Console.WriteLine("Missing or invalid 'Credentials' section in appsettings.json.");
+
+            if (urls == null)
+                throw new InvalidOperationException("Missing or invalid 'Credentials:Urls' section in appsettings.json.");
+
+            if (automationSettings == null)
+                throw new InvalidOperationException("Missing or invalid 'AutomationSettings' section in appsettings.json.");
+
+            if (!string.IsNullOrWhiteSpace(configReader.Password))
+                configReader.Password = DecodeBase64(configReader.Password);
             configReader.Urls = urls;
             configReader.AutomationSettings = automationSettings;
 
@@ -202,8 +240,5 @@ namespace AutomationFrameWork.Hooks
 
             extent.Flush();
         }
-
-
-
     }
 }

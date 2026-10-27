@@ -14,33 +14,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
     <PackageReference Include="ExtentReports" Version="5.0.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.2" />
-    <PackageReference Include="Microsoft.ML" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-    <PackageReference Include="Microsoft.Playwright" Version="1.58.0" />
-    <PackageReference Include="Microsoft.Playwright.TestAdapter" Version="1.58.0" />
+    <PackageReference Include="Microsoft.Playwright" Version="1.49.0" />
+    <PackageReference Include="Microsoft.Playwright.TestAdapter" Version="1.49.0" />
     <PackageReference Include="Reqnroll.xUnit" Version="3.3.3" />
+    <PackageReference Include="System.Net.Http.Json" Version="10.0.3" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ClosedXML" Version="0.102.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PagesAndObjects\System\AgentMenu\" />
-    <Folder Include="PagesAndObjects\System\CurrenciesMenu\" />
-    <Folder Include="PagesAndObjects\System\LocationMenu\" />
-    <Folder Include="PagesAndObjects\System\AgentCommissionMenu\" />
-    <Folder Include="PagesAndObjects\System\TransitionStatusMenu\" />
-    <Folder Include="PagesAndObjects\System\TrackerUserMenu\" />
-    <Folder Include="PagesAndObjects\System\UserMenu\" />
-    <Folder Include="Traces\" />
+    <Folder Include="browser-session\" />
+    <Folder Include="Models\" />
     <Folder Include="Reports\" />
+    <Folder Include="Traces\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,5 +46,4 @@
     <ReqnrollLegacyCodeBehindFiles Remove="node_modules\**" />
   </ItemGroup>
 
-  <!-- Removed the exclusion of AddUser.feature -->
 </Project>

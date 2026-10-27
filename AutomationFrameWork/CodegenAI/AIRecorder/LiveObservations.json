@@ -1,0 +1,552 @@
+{
+  "generatedAtUtc": "2026-09-16T11:50:59.933Z",
+  "source": {
+    "codeFilePath": "C:\\Users\\shivakumar.garlapati\\source\\repos\\docadministration-app\\testing\\Doc Administration Playwright Automation\\AutomationFrameWork\\CodegenAI\\Code.ts"
+  },
+  "actions": [
+    {
+      "line": 8,
+      "raw": "  await page.goto('https://investorreporting-mb-sit.trimont.com/default.aspx');",
+      "type": "goto",
+      "page": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+      "debug": {
+        "actionIndex": 0,
+        "originalLocator": "page.goto(...)",
+        "currentUrl": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+        "pageTitle": "Investor Reporting - SIT",
+        "readyState": "complete",
+        "frameCount": 1,
+        "frames": [
+          {
+            "index": 0,
+            "name": null,
+            "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+            "isMainFrame": true
+          }
+        ],
+        "reason": "Navigation replayed"
+      }
+    },
+    {
+      "line": 9,
+      "raw": "  await page.getByRole('link', { name: 'Deals' }).click();",
+      "type": "roleAction",
+      "method": "click",
+      "text": "Deals",
+      "role": "link",
+      "scope": "page",
+      "frameSelector": null,
+      "originalLocator": "page.getByRole('link', { name: 'Deals' })",
+      "matchCount": 1,
+      "isUnique": true,
+      "duplicateText": false,
+      "insideTable": false,
+      "ancestors": [
+        "a",
+        "li",
+        "ul",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "form",
+        "body",
+        "html"
+      ],
+      "table": null,
+      "row": null,
+      "cell": null,
+      "target": {
+        "tagName": "a",
+        "text": "Deals",
+        "role": null,
+        "testId": null,
+        "id": null,
+        "className": "rmLink rmRootLink",
+        "ariaLabel": null,
+        "name": null,
+        "title": null,
+        "dataQa": null,
+        "dataTest": null,
+        "attributeCounts": {
+          "testId": 0,
+          "id": 0,
+          "ariaLabel": 0,
+          "name": 0,
+          "title": 0,
+          "dataQa": 0,
+          "dataTest": 0
+        }
+      },
+      "tableScopedMatchCount": 0,
+      "sameBusinessRowCount": 0,
+      "rowId": null,
+      "tableId": null,
+      "debug": {
+        "actionIndex": 1,
+        "originalLocator": "page.getByRole('link', { name: 'Deals' })",
+        "currentUrl": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+        "pageTitle": "Investor Reporting - SIT",
+        "readyState": "complete",
+        "frameCount": 1,
+        "frames": [
+          {
+            "index": 0,
+            "name": null,
+            "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+            "isMainFrame": true
+          }
+        ],
+        "resolvedScope": "page",
+        "resolvedFrame": null,
+        "locatorMatchCount": 1,
+        "attachedState": true,
+        "visibleState": true,
+        "lastAttempt": {
+          "elapsedMs": 0,
+          "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+          "readyState": "complete",
+          "pageTitle": "Investor Reporting - SIT",
+          "frameCount": 1,
+          "mainFrameMatchCount": 1,
+          "frameMatches": [],
+          "scope": "page"
+        },
+        "attempts": [
+          {
+            "elapsedMs": 0,
+            "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+            "readyState": "complete",
+            "pageTitle": "Investor Reporting - SIT",
+            "frameCount": 1,
+            "mainFrameMatchCount": 1,
+            "frameMatches": [],
+            "scope": "page"
+          }
+        ],
+        "reason": "Locator resolved and DOM inspected"
+      }
+    },
+    {
+      "line": 10,
+      "raw": "  await page.getByRole('link', { name: 'Deals Completion Status' }).click();",
+      "type": "roleAction",
+      "method": "click",
+      "text": "Deals Completion Status",
+      "role": "link",
+      "scope": "page",
+      "frameSelector": null,
+      "originalLocator": "page.getByRole('link', { name: 'Deals Completion Status' })",
+      "matchCount": 1,
+      "isUnique": true,
+      "duplicateText": false,
+      "insideTable": false,
+      "ancestors": [
+        "a",
+        "li",
+        "ul",
+        "div",
+        "li",
+        "ul",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "form",
+        "body",
+        "html"
+      ],
+      "table": null,
+      "row": null,
+      "cell": null,
+      "target": {
+        "tagName": "a",
+        "text": "Deals Completion Status",
+        "role": null,
+        "testId": null,
+        "id": null,
+        "className": "rmLink",
+        "ariaLabel": null,
+        "name": null,
+        "title": "Deals Completion Status By Reporting Period",
+        "dataQa": null,
+        "dataTest": null,
+        "attributeCounts": {
+          "testId": 0,
+          "id": 0,
+          "ariaLabel": 0,
+          "name": 0,
+          "title": 1,
+          "dataQa": 0,
+          "dataTest": 0
+        }
+      },
+      "tableScopedMatchCount": 0,
+      "sameBusinessRowCount": 0,
+      "rowId": null,
+      "tableId": null,
+      "debug": {
+        "actionIndex": 2,
+        "originalLocator": "page.getByRole('link', { name: 'Deals Completion Status' })",
+        "currentUrl": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+        "pageTitle": "Investor Reporting - SIT",
+        "readyState": "complete",
+        "frameCount": 1,
+        "frames": [
+          {
+            "index": 0,
+            "name": null,
+            "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+            "isMainFrame": true
+          }
+        ],
+        "resolvedScope": "page",
+        "resolvedFrame": null,
+        "locatorMatchCount": 1,
+        "attachedState": true,
+        "visibleState": true,
+        "lastAttempt": {
+          "elapsedMs": 0,
+          "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+          "readyState": "complete",
+          "pageTitle": "Investor Reporting - SIT",
+          "frameCount": 1,
+          "mainFrameMatchCount": 1,
+          "frameMatches": [],
+          "scope": "page"
+        },
+        "attempts": [
+          {
+            "elapsedMs": 0,
+            "url": "https://investorreporting-mb-sit.trimont.com/default.aspx",
+            "readyState": "complete",
+            "pageTitle": "Investor Reporting - SIT",
+            "frameCount": 1,
+            "mainFrameMatchCount": 1,
+            "frameMatches": [],
+            "scope": "page"
+          }
+        ],
+        "reason": "Locator resolved and DOM inspected"
+      }
+    },
+    {
+      "line": 13,
+      "raw": "  await page.getByRole('link', { name: '01CMLB1' }).click();",
+      "type": "roleAction",
+      "method": "click",
+      "text": "01CMLB1",
+      "role": "link",
+      "scope": "page",
+      "frameSelector": null,
+      "originalLocator": "page.getByRole('link', { name: '01CMLB1' })",
+      "matchCount": 1,
+      "isUnique": true,
+      "duplicateText": false,
+      "insideTable": true,
+      "ancestors": [
+        "a",
+        "td",
+        "tr",
+        "tbody",
+        "table",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "form",
+        "body",
+        "html"
+      ],
+      "table": {
+        "tagName": "table",
+        "id": "ctl00_cp1_gd_ctl00",
+        "testId": null,
+        "role": null,
+        "className": "rgMasterTable rgClipCells"
+      },
+      "row": {
+        "tagName": "tr",
+        "id": "ctl00_cp1_gd_ctl00__0",
+        "testId": null,
+        "role": null,
+        "className": "rgRow",
+        "labelValue": null,
+        "businessValue": "20386",
+        "businessValueColumnIndex": 3,
+        "rowValues": [
+          "Shanikwa Peterkin",
+          "01CMLB1",
+          "20386",
+          "11/2025",
+          "generated",
+          "generated",
+          "final",
+          "07/24/2026 11:28 PM"
+        ]
+      },
+      "cell": {
+        "tagName": "td",
+        "columnIndex": 2,
+        "testId": null,
+        "role": null,
+        "className": null
+      },
+      "target": {
+        "tagName": "a",
+        "text": "01CMLB1",
+        "role": null,
+        "testId": null,
+        "id": null,
+        "className": null,
+        "ariaLabel": null,
+        "name": null,
+        "title": null,
+        "dataQa": null,
+        "dataTest": null,
+        "attributeCounts": {
+          "testId": 0,
+          "id": 0,
+          "ariaLabel": 0,
+          "name": 0,
+          "title": 0,
+          "dataQa": 0,
+          "dataTest": 0
+        }
+      },
+      "tableScopedMatchCount": 40,
+      "sameBusinessRowCount": 1,
+      "rowId": {
+        "value": "ctl00_cp1_gd_ctl00__0",
+        "dynamic": true
+      },
+      "tableId": {
+        "value": "ctl00_cp1_gd_ctl00",
+        "dynamic": true
+      },
+      "debug": {
+        "actionIndex": 3,
+        "originalLocator": "page.getByRole('link', { name: '01CMLB1' })",
+        "currentUrl": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealsCompletionStatus.aspx",
+        "pageTitle": "Investor Reporting - SIT",
+        "readyState": "complete",
+        "frameCount": 1,
+        "frames": [
+          {
+            "index": 0,
+            "name": null,
+            "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealsCompletionStatus.aspx",
+            "isMainFrame": true
+          }
+        ],
+        "resolvedScope": "page",
+        "resolvedFrame": null,
+        "locatorMatchCount": 1,
+        "attachedState": true,
+        "visibleState": true,
+        "lastAttempt": {
+          "elapsedMs": 0,
+          "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealsCompletionStatus.aspx",
+          "readyState": "complete",
+          "pageTitle": "Investor Reporting - SIT",
+          "frameCount": 1,
+          "mainFrameMatchCount": 1,
+          "frameMatches": [],
+          "scope": "page"
+        },
+        "attempts": [
+          {
+            "elapsedMs": 0,
+            "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealsCompletionStatus.aspx",
+            "readyState": "complete",
+            "pageTitle": "Investor Reporting - SIT",
+            "frameCount": 1,
+            "mainFrameMatchCount": 1,
+            "frameMatches": [],
+            "scope": "page"
+          }
+        ],
+        "reason": "Locator resolved and DOM inspected"
+      }
+    },
+    {
+      "line": 14,
+      "raw": "  await page.locator('#ctl00_ContentPlaceHolder1_rgrdReports_ctl00_ctl07_chAction').check();",
+      "type": "locatorAction",
+      "method": "check",
+      "text": "",
+      "role": null,
+      "scope": "page",
+      "frameSelector": null,
+      "originalLocator": "page.locator('#ctl00_ContentPlaceHolder1_rgrdReports_ctl00_ctl07_chAction')",
+      "matchCount": 1,
+      "isUnique": true,
+      "duplicateText": false,
+      "insideTable": true,
+      "ancestors": [
+        "input",
+        "span",
+        "td",
+        "tr",
+        "tbody",
+        "table",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "form",
+        "body",
+        "html"
+      ],
+      "table": {
+        "tagName": "table",
+        "id": "ctl00_ContentPlaceHolder1_rgrdReports_ctl00",
+        "testId": null,
+        "role": null,
+        "className": "rgMasterTable rgClipCells"
+      },
+      "row": {
+        "tagName": "tr",
+        "id": "ctl00_ContentPlaceHolder1_rgrdReports_ctl00__1",
+        "testId": null,
+        "role": null,
+        "className": "rgAltRow",
+        "labelValue": null,
+        "businessValue": "Loan Periodic Update",
+        "businessValueColumnIndex": 2,
+        "rowValues": [
+          "Loan Periodic Update",
+          "view grid",
+          "report",
+          "Generated",
+          "7/24/2026 11:28:36 PM",
+          "S. Hr",
+          "1 comment"
+        ]
+      },
+      "cell": {
+        "tagName": "td",
+        "columnIndex": 5,
+        "testId": null,
+        "role": null,
+        "className": null
+      },
+      "target": {
+        "tagName": "input",
+        "text": "",
+        "role": null,
+        "testId": null,
+        "id": "ctl00_ContentPlaceHolder1_rgrdReports_ctl00_ctl07_chAction",
+        "className": null,
+        "ariaLabel": null,
+        "name": "ctl00$ContentPlaceHolder1$rgrdReports$ctl00$ctl07$chAction",
+        "title": null,
+        "dataQa": null,
+        "dataTest": null,
+        "attributeCounts": {
+          "testId": 0,
+          "id": 1,
+          "ariaLabel": 0,
+          "name": 1,
+          "title": 0,
+          "dataQa": 0,
+          "dataTest": 0
+        }
+      },
+      "tableScopedMatchCount": 51,
+      "sameBusinessRowCount": 1,
+      "rowId": {
+        "value": "ctl00_ContentPlaceHolder1_rgrdReports_ctl00__1",
+        "dynamic": true
+      },
+      "tableId": {
+        "value": "ctl00_ContentPlaceHolder1_rgrdReports_ctl00",
+        "dynamic": true
+      },
+      "debug": {
+        "actionIndex": 4,
+        "originalLocator": "page.locator('#ctl00_ContentPlaceHolder1_rgrdReports_ctl00_ctl07_chAction')",
+        "currentUrl": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealReportsList.aspx",
+        "pageTitle": "Investor Reporting - SIT",
+        "readyState": "complete",
+        "frameCount": 1,
+        "frames": [
+          {
+            "index": 0,
+            "name": null,
+            "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealReportsList.aspx",
+            "isMainFrame": true
+          }
+        ],
+        "resolvedScope": "page",
+        "resolvedFrame": null,
+        "locatorMatchCount": 1,
+        "attachedState": true,
+        "visibleState": true,
+        "lastAttempt": {
+          "elapsedMs": 1688,
+          "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealReportsList.aspx",
+          "readyState": "complete",
+          "pageTitle": "Investor Reporting - SIT",
+          "frameCount": 1,
+          "mainFrameMatchCount": 1,
+          "frameMatches": [],
+          "scope": "page"
+        },
+        "attempts": [
+          {
+            "elapsedMs": 0,
+            "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealsCompletionStatus.aspx",
+            "readyState": "complete",
+            "pageTitle": "Investor Reporting - SIT",
+            "frameCount": 1,
+            "mainFrameMatchCount": 0,
+            "frameMatches": [],
+            "scope": "page"
+          },
+          {
+            "elapsedMs": 267,
+            "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealsCompletionStatus.aspx",
+            "readyState": "unavailable",
+            "pageTitle": "Investor Reporting - SIT",
+            "frameCount": 1,
+            "mainFrameMatchCount": 0,
+            "frameMatches": [],
+            "scope": "page"
+          },
+          {
+            "elapsedMs": 1688,
+            "url": "https://investorreporting-mb-sit.trimont.com/IRDeals/DealReportsList.aspx",
+            "readyState": "complete",
+            "pageTitle": "Investor Reporting - SIT",
+            "frameCount": 1,
+            "mainFrameMatchCount": 1,
+            "frameMatches": [],
+            "scope": "page"
+          }
+        ],
+        "reason": "Locator resolved and DOM inspected"
+      }
+    }
+  ]
+}

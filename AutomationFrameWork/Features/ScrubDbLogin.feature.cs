@@ -159,12 +159,18 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 5
- await testRunner.GivenAsync("user lands on ScrubDb application", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("user lands on EMS application", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 6
- await testRunner.WhenAsync("Verify the page title is correct", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.AndAsync("the user enters valid login credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 7
+ await testRunner.AndAsync("the user clicks the Sign In button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 8
+ await testRunner.WhenAsync("Verify the page title is correct", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 9
  await testRunner.ThenAsync("User logout the application", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

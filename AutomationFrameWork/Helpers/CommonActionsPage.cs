@@ -18,20 +18,20 @@ namespace AutomationFrameWork.Pages
 
         public async Task NavigateToURLAsync(String url)
         {
-            if (!PlaywrightDriver.HasSavedSession())
-            {
-                await ClearBrowserCache();
-                Console.WriteLine("[Session] No saved session - cache cleared for fresh login.");
-            }
-            else
-            {
-                Console.WriteLine("[Session] Saved session detected - skipping cache clear.");
-            }
+            //if (!PlaywrightDriver.HasSavedSession())
+            //{
+            //    await ClearBrowserCache();
+            //    Console.WriteLine("[Session] No saved session - cache cleared for fresh login.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("[Session] Saved session detected - skipping cache clear.");
+            //}
 
             await _page.GotoAsync(url);
 
-            if (!PlaywrightDriver.HasSavedSession())
-                await WaitAsync(25);
+            //if (!PlaywrightDriver.HasSavedSession())
+               await WaitAsync(10);
         }
 
         public async Task WaitAsync(float seconds)

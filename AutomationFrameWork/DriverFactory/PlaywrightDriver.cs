@@ -86,6 +86,7 @@ namespace AutomationFrameWork.Drivers
                 ViewportSize = config.AutomationSettings.Headless
                 ? new ViewportSize { Width = 1920, Height = 1080 }
                 : ViewportSize.NoViewport,
+                IgnoreHTTPSErrors = true,
 
                 UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
                 "AppleWebKit/537.36 (KHTML, like Gecko) " +

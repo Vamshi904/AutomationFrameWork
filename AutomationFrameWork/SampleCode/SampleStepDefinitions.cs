@@ -18,7 +18,7 @@ namespace AutomationFrameWork.SampleCode
         public async Task GivenINavigateToTheApplicationUrlAsync()
         {
             var configReader = Context.ScenarioContext.Get<ConfigReader>("ConfigReader");
-            await Context.CommonActions.NavigateToURLAsync(configReader.Urls.ScrubDb);
+            await Context.CommonActions.NavigateToURLAsync(configReader.Urls.EMS);
         }
 
 

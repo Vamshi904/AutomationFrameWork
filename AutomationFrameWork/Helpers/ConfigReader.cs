@@ -12,7 +12,7 @@ namespace AutomationFrameWork.Utilities
 
     public class UrlSettings
     {
-        public string ScrubDb { get; set; }
+        public string EMS { get; set; }
         public string ControlCenter { get; set; }
     }
 

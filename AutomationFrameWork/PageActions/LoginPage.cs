@@ -1,7 +1,5 @@
 ﻿using AutomationFrameWork.Utilities;
 using Microsoft.Playwright;
-using System;
-using System.Threading.Tasks;
 
 namespace AutomationFrameWork.SampleCode
 {
@@ -24,7 +22,7 @@ namespace AutomationFrameWork.SampleCode
 
             var titleText = await PageTitle.InnerTextAsync();
 
-            if (!titleText.Contains("ScrubDB"))
+            if (!titleText.Contains("Dashboard"))
             {
                 throw new Exception($"Page title mismatch. Actual: {titleText}");
             }
@@ -34,6 +32,61 @@ namespace AutomationFrameWork.SampleCode
             }
         }
 
+        public async Task EnterCredentials(string username, string password)
+        {
+            if (await Username.CountAsync ()>0)
+            {
+                await Username.FillAsync(username);
+
+            }       
+            else
+            {
+               Console.WriteLine("Username field is not visible");
+            }
+                await Task.Delay(2000);
+            if (await Password.CountAsync() > 0)
+            {
+                await Password.FillAsync(password);
+
+            }
+            else
+            {
+              Console.WriteLine("Password field is not visible");  
+            }
+        }
+
+        public async Task ClickSignIn()
+        {
+            await Task.Delay(2000);
+
+            if (await SignButton.CountAsync()>0)    
+            {
+                await SignButton.ClickAsync();
+
+            }
+            else
+            {
+               Console.WriteLine("Sign In button is not visible");
+            }
+        }
+
+        public async Task ClickonAdvanceandprocessedbuton()
+        {
+          
+            if (await AdvanceButton.IsVisibleAsync())
+            {
+                await AdvanceButton.ClickAsync();
+
+            }
+            await Task.Delay(2000);
+
+            if (await ProcessedLink.IsVisibleAsync())
+            {
+                await ProcessedLink.ClickAsync();
+
+            }
+            await Task.Delay(2000);
+        }
         public async Task Logout()
         {
             await SignOffLink.ClickAsync();

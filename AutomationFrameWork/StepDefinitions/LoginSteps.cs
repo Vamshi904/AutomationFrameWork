@@ -13,7 +13,6 @@ namespace AutomationFrameWork.SampleCode
     {
         private CommonActionsPage Page => new CommonActionsPage(Context.Page);       // Lazy init — only created when first step runs, by then Page is not null
 
-        //private SamplePageAction _SearchPageAction => new SamplePageAction(Context, _driver.Page);
 
         private LoginPage _loginPage => new LoginPage(Context, _driver.Page);
         public LoginSteps(PlaywrightDriver playwrightDriver, ScenarioContext scenarioContext) : base(playwrightDriver, scenarioContext)
@@ -23,7 +22,7 @@ namespace AutomationFrameWork.SampleCode
 
         }
 
-        [Given("user lands on ScrubDb application")]
+        [Given("user lands on EMS application")]
 
         public async Task GivenINavigateToTheApplicationUrlAsync()
 
@@ -31,8 +30,29 @@ namespace AutomationFrameWork.SampleCode
 
             var configReader = Context.ScenarioContext.Get<ConfigReader>("ConfigReader");
 
-            await Page.NavigateToURLAsync(configReader.Urls.ScrubDb);
+            await Page.NavigateToURLAsync(configReader.Urls.EMS);
 
+
+        }
+        [Given("the user enters valid login credentials")]
+        public async Task GivenTheUserEntersValidLoginCredentials()
+        {
+            await _loginPage.ClickonAdvanceandprocessedbuton();
+            
+            var configReader = Context.ScenarioContext.Get<ConfigReader>("ConfigReader");
+            await _loginPage.EnterCredentials(
+                configReader.Username,
+                configReader.Password
+            );
+            Context.ScenarioContext["Page"] = Context.Page;
+
+            await _loginPage.EnterCredentials("mgr.dele", "Ems!Dev2026");
+        }
+
+        [Given("the user clicks the Sign In button")]
+        public async Task GivenTheUserClicksTheSignInButton()
+        {
+            await _loginPage.ClickSignIn();
         }
 
         [When("Verify the page title is correct")]
@@ -51,7 +71,7 @@ namespace AutomationFrameWork.SampleCode
 
         {
 
-            await _loginPage.Logout();
+          //  await _loginPage.Logout();
 
         }
 

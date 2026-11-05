@@ -1,7 +1,5 @@
 ﻿using AutomationFrameWork.Utilities;
 using Microsoft.Playwright;
-using System;
-using System.Threading.Tasks;
 
 namespace AutomationFrameWork.SampleCode
 {
@@ -36,35 +34,45 @@ namespace AutomationFrameWork.SampleCode
 
         public async Task EnterCredentials(string username, string password)
         {
-            if(await Username.IsVisibleAsync())
+            if (await Username.CountAsync ()>0)
             {
                 await Username.FillAsync(username);
 
+            }       
+            else
+            {
+               Console.WriteLine("Username field is not visible");
             }
-            await Task.Delay(2000);
-            if(await Password.IsVisibleAsync())
+                await Task.Delay(2000);
+            if (await Password.CountAsync() > 0)
             {
                 await Password.FillAsync(password);
 
+            }
+            else
+            {
+              Console.WriteLine("Password field is not visible");  
             }
         }
 
         public async Task ClickSignIn()
         {
-           if(await SignButton.IsVisibleAsync())
+            await Task.Delay(2000);
+
+            if (await SignButton.CountAsync()>0)    
             {
                 await SignButton.ClickAsync();
 
+            }
+            else
+            {
+               Console.WriteLine("Sign In button is not visible");
             }
         }
 
         public async Task ClickonAdvanceandprocessedbuton()
         {
-            await SignButton.WaitForAsync(new LocatorWaitForOptions
-            {
-                State = WaitForSelectorState.Visible,
-                Timeout = 15000
-            });
+          
             if (await AdvanceButton.IsVisibleAsync())
             {
                 await AdvanceButton.ClickAsync();

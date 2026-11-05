@@ -18,7 +18,7 @@ namespace AutomationFrameWork.Features
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::Xunit.TraitAttribute("Category", "LoginCSH")]
-    public partial class LoginScruDBFeature : object, global::Xunit.IClassFixture<LoginScruDBFeature.FixtureData>, global::Xunit.IAsyncLifetime
+    public partial class LoginEMSApplicationFeature : object, global::Xunit.IClassFixture<LoginEMSApplicationFeature.FixtureData>, global::Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
@@ -26,14 +26,14 @@ namespace AutomationFrameWork.Features
         private static string[] featureTags = new string[] {
                 "LoginCSH"};
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Login ScruDB", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Login EMS Application", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
         private global::Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "ScrubDbLogin.feature"
+#line 1 "EMSLogin.feature"
 #line hidden
         
-        public LoginScruDBFeature(LoginScruDBFeature.FixtureData fixtureData, global::Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public LoginEMSApplicationFeature(LoginEMSApplicationFeature.FixtureData fixtureData, global::Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
         }
@@ -107,7 +107,7 @@ namespace AutomationFrameWork.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/ScrubDbLogin.feature.ndjson", 3);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/EMSLogin.feature.ndjson", 3);
         }
         
         async global::System.Threading.Tasks.Task global::Xunit.IAsyncLifetime.InitializeAsync()
@@ -136,7 +136,7 @@ namespace AutomationFrameWork.Features
         }
         
         [global::Xunit.SkippableFactAttribute(DisplayName="Verify user logs in successfully and logsout")]
-        [global::Xunit.TraitAttribute("FeatureTitle", "Login ScruDB")]
+        [global::Xunit.TraitAttribute("FeatureTitle", "Login EMS Application")]
         [global::Xunit.TraitAttribute("Description", "Verify user logs in successfully and logsout")]
         [global::Xunit.TraitAttribute("Category", "UserLogin")]
         public async global::System.Threading.Tasks.Task VerifyUserLogsInSuccessfullyAndLogsout()
@@ -170,9 +170,6 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line 8
  await testRunner.WhenAsync("Verify the page title is correct", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 9
- await testRunner.ThenAsync("User logout the application", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
@@ -184,12 +181,12 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             
             async global::System.Threading.Tasks.Task global::Xunit.IAsyncLifetime.InitializeAsync()
             {
-                await LoginScruDBFeature.FeatureSetupAsync();
+                await LoginEMSApplicationFeature.FeatureSetupAsync();
             }
             
             async global::System.Threading.Tasks.Task global::Xunit.IAsyncLifetime.DisposeAsync()
             {
-                await LoginScruDBFeature.FeatureTearDownAsync();
+                await LoginEMSApplicationFeature.FeatureTearDownAsync();
             }
         }
     }

@@ -13,7 +13,7 @@ namespace AutomationFrameWork.SampleCode
         }
 
 
-        public ILocator PageTitle => _page.GetByText("Dashboard");
+        public ILocator PageTitle => _page.GetByText("Dashboard").First;
         public ILocator SignOffLink => _page.GetByRole(AriaRole.Link, new() { Name = "Sign Off" });
         public ILocator LogoutMsg => _page.GetByRole(AriaRole.Heading, new() { Name = "You’ve been signed out of " });
 

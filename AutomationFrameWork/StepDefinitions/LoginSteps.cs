@@ -38,6 +38,13 @@ namespace AutomationFrameWork.SampleCode
         public async Task GivenTheUserEntersValidLoginCredentials()
         {
             await _loginPage.ClickonAdvanceandprocessedbuton();
+            
+            var configReader = Context.ScenarioContext.Get<ConfigReader>("ConfigReader");
+            await _loginPage.EnterCredentials(
+                configReader.Username,
+                configReader.Password
+            );
+            Context.ScenarioContext["Page"] = Context.Page;
 
             await _loginPage.EnterCredentials("mgr.dele", "Ems!Dev2026");
         }
